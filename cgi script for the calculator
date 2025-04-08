@@ -1,0 +1,39 @@
+#!/usr/bin/python3
+
+import cgi
+
+# Print HTTP Header
+print("Content-type: text/html\r\n\r\n")
+
+# Get form data
+form = cgi.FieldStorage()
+x = form.getvalue("x")
+y = form.getvalue("y")
+
+# Validate inputs and perform addition
+if x is not None and y is not None:
+    try:
+        result = int(x) + int(y)
+        message = f"<h2>Result: {x} + {y} = {result}</h2>"
+    except ValueError:
+        message = "<h2>Error: Please enter valid numbers.</h2>"
+else:
+    message = "<h2>Error: Missing input values.</h2>"
+
+# Output HTML response
+print(f"""
+<html>
+<head>
+    <title>CGI Addition Result</title>
+</head>
+<body>
+    {message}
+    <br><br>
+    <a href="/index.html">Go Back</a>
+</body>
+</html>
+""")
+
+
+
+
