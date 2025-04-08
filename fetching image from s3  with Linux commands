@@ -1,0 +1,119 @@
+in this file have a code of the fatching the image video oe different file from s3 service in AWS in this file have  run Linux command in the http  both the cgi script using python or html basic code ; 
+
+cgi script  
+
+
+#!/usr/bin/env python3
+
+import cgi
+import subprocess
+
+print("Content-type: text/html\n")
+
+form = cgi.FieldStorage()
+action = form.getvalue("action")
+command = form.getvalue("command")
+
+print("<html><head><title>Result</title></head><body>")
+
+if action == "show_picture":
+    image_url = "https://mamaftt.s3.us-east-1.amazonaws.com/google+pay2222.webp"
+    print("<h2>Here is your picture:</h2>")
+    print(f'<img src="{image_url}" alt="Image" style="max-width:90%;height:auto;">')
+
+elif action == "run_command" and command:
+    try:
+        output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT, timeout=5)
+        print("<h2>Command Output:</h2>")
+        print("<pre>{}</pre>".format(output.decode("utf-8")))
+    except subprocess.CalledProcessError as e:
+        print("<h2>Error:</h2>")
+        print("<pre>{}</pre>".format(e.output.decode("utf-8")))
+    except Exception as e:
+        print(f"<h2>Exception:</h2><pre>{str(e)}</pre>")
+
+else:
+    print("<p>No valid action selected.</p>")
+
+print('<br><a href="/index.html">Go Back</a>')
+print("</body></html>")
+
+
+
+
+or the html code is  
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CGI Utility</title>
+</head>
+<body>
+    <h2>Picture Viewer & Linux Command Runner</h2>
+
+    <!-- Form for both actions -->
+    <form action="/cgi-bin/multi_action.py" method="post">
+        <button name="action" value="show_picture">Show Picture</button>
+        <br><br>
+        <input type="text" name="command" placeholder="Enter Linux command" size="60" />
+        <button name="action" value="run_command">Run Command</button>
+    </form>
+</body>
+</html>
+
+
+
+
+
+the code for the alon servicess alone s3 fatching image video from AWS s3  service is  cgi ccript is ;
+
+
+#!/usr/bin/env python3
+
+print("Content-type: text/html\n")
+
+image_url = "https://mamaftt.s3.us-east-1.amazonaws.com/google+pay2222.webp"
+
+print(f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Display</title>
+</head>
+<body>
+    <h2>Here is the image:</h2>
+    <img src="{image_url}" alt="Google Pay Image" style="max-width: 90%; height: auto;" />
+</body>
+</html>
+""")
+
+
+or the html code is geare ;
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Picture</title>
+</head>
+<body>
+    <h2>Click the button to view the image</h2>
+    <form action="/cgi-bin/show_image.py" method="get">
+        <button type="submit">View Picture</button>
+    </form>
+</body>
+</html>
+
+
+
+the most important command in this  whic i forget every time is  
+
+
+chmod +x /var/www/cgi-bin/(file name of in the cgi directory ) 
+
+
+
+
