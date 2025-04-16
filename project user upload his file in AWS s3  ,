@@ -1,0 +1,148 @@
+Hear is the the code of the html foe the project user uploag his file's in AWS s3 bucket 
+CODE :- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload to AWS S3</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+
+    #drop-area {
+      border: 3px dashed #aaa;
+      padding: 20px;
+      text-align: center;
+      color: #777;
+    }
+
+    #fileInput {
+      display: none;
+    }
+
+    .button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #output {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Upload Your File to My AWS S3 Bucket</h2>
+
+  <div id="drop-area">
+    <p>Drag & Drop your file here or click the button below</p>
+    <input type="file" id="fileInput">
+    <button class="button" onclick="document.getElementById('fileInput').click()">Select File</button>
+  </div>
+
+  <div id="file-info"></div>
+
+  <label for="rename">Recommended: Rename your file to something unique (e.g., with your name or date)</label>
+  <input type="text" id="rename" placeholder="new-filename.txt">
+
+  <br><br>
+  <button class="button" onclick="uploadFile()">Upload File</button>
+
+  <div id="output"></div>
+
+  <script>
+    let selectedFile;
+
+    document.getElementById('fileInput').addEventListener('change', function (event) {
+      selectedFile = event.target.files[0];
+      document.getElementById('file-info').innerHTML = `Selected: ${selectedFile.name}`;
+    });
+
+    // Drag and Drop
+    const dropArea = document.getElementById('drop-area');
+    dropArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropArea.style.borderColor = '#0077cc';
+    });
+
+    dropArea.addEventListener('dragleave', () => {
+      dropArea.style.borderColor = '#aaa';
+    });
+
+    dropArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      selectedFile = e.dataTransfer.files[0];
+      document.getElementById('file-info').innerHTML = `Selected: ${selectedFile.name}`;
+    });
+
+    async function uploadFile() {
+      if (!selectedFile) {
+        alert('Please select or drag a file first.');
+        return;
+      }
+
+      const newName = document.getElementById('rename').value.trim();
+      const fileName = newName !== "" ? newName : selectedFile.name;
+
+      const bucketName = 's3buckets3yt';
+      const region = 'us-east-1';
+      const uploadUrl = `https://${bucketName}.s3.${region}.amazonaws.com/${fileName}`;
+
+      const result = await fetch(uploadUrl, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': selectedFile.type
+        },
+        body: selectedFile
+      });
+
+      if (result.ok) {
+        document.getElementById('output').innerHTML = `✅ File uploaded successfully as <b>${fileName}</b>`;
+      } else {
+        document.getElementById('output').innerHTML = `❌ Upload failed.`;
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+Bucket Policy code :-
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::s3buckets3yt/*"
+    }
+  ]
+}
+
+
+
+CORS Configuration :-
+
+[
+  {
+    "AllowedHeaders": ["*"],
+    "AllowedMethods": ["PUT", "POST", "GET"],
+    "AllowedOrigins": ["*"],
+    "ExposeHeaders": []
+  }
+]
+
+
+thank you 
