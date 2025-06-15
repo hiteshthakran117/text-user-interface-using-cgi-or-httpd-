@@ -110,7 +110,12 @@ Click on the bucket and open after open in new window  you able to see  term's l
 -Object's    // in Object  from the object window upload , download , delete the data from the  bucket also create the folder or from the Actionyou able to deleat change the storage class of the bucket also edit the encription's of the bucket  
 -Metadata    //  in metadata store the data about the data There are two type's  1. System metadata (automatically added by AWS) Content-Length, Last-Modified, ETag, etc. User-defined metadata  2 .Custom key-value pairs that you define when uploading.For example: x-amz-meta-owner: hitesh 
 -Properties  // in the bucket properties it give the Bucket overview also edit the bucket Bucket Versioning , also able to edit the Tag's  also edit the encription level of the bucket  also edit the Object lock  also host the static website Static website hosting .
--Permissions
--Metrics
--Managment 
--Access point 
+-Permissions  // in the permission it tell about your  bucket permission  1 . Block public access (bucket settings) if we edit this then the same as the step no 2 at the time of creating the bucket 
+in we also give the bucket policy in this we edit the policy to make our bucket public acceable or not acceable by edit the policy in the "json" formate  also change the bucket Ownership 
+we also add one more feactue innthe s3 any user on the internet can "get" "push" "put" the data in our buckit by edit the  Cross-origin resource sharing (CORS) 
+-Metrics       // in Bucket metrics it tell about the  1 . Bucket metrics 2 .Total number of objects in the bucket   . It have a Storage Class Analysis that  help to identify the no of object acces in how much time for change the storage class of the object  to reduce the cost 
+in the matrics we also create the replica in the different region of the AWS or in the different AZ's . 
+-Managment    // in the managment Lifecycle configuration have a tipe of the manager that manage the file or the object or deleate after a certain period of time like :- Example: Move files to Glacier after 30 days.
+it also help to update the replica automatically Replication – Copy objects to another bucket (even in a different region).
+-Access point   // in the access point we create the acces point weher we acces our bucket   while the creating the access point  tell  where u acces the bucket from the 
+VPC or from the internet  also create the Access Point policy for access the bucket over the internet 
