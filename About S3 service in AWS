@@ -1,0 +1,105 @@
+Full concept of the s3 service in the AWS :
+
+S3  is a simple storage service it is use to store the objects. it's highly scalable, durable and access the objects from any where or any time. it is also offers industry-leading scalability at any point of time .
+
+in the s3 have different type of storage classe's for different different use case .
+AWS S3 offer six different storage class 
+
+Storage Class's;   
+-Standard	        
+-Intelligent-Tiering	 
+-Standard-IA	               
+-One Zone-IA	
+-Glacier	Archival 
+-Glacier Deep Archive	
+
+
+in the  first Standerd  storage class  the data store whiac access Frequently  it cost is very high  or the durability is 99.99999999% but the cost of this type of the storage class is very high.
+
+
+in the Intelligent-Tiering type storage class  in the data store type is Unknown access patterns there is no possiblity data can be access any time the time would be per min or per hour also   in this type of storage class the ammout they 
+low then the  Standard storage class  the durability of this storage type is same as the standard storage class  99.99999999%  . 
+
+
+Standard-IA  in this type of the storage class the type of data is store is  Infrequent access  but the  cost is 	Cheaper then the Intelligent-Tiering	 or the Standard type of the storage class the durablity is same 99.9999999% 
+
+in the One-Zone-IA  storage class type the data is store in only in the one AZ ( availability zone ) oof the AWS  the  the data acces time or the posiblity is Infrequent access  the cost in this storage type of S3 is Cheaper then all the 
+starate class in s3  the durablity is low in the 1AZ  storage class type  . 
+
+Glacier	 in this starage type the  data store is retrieval in minutes/hours  and the durablity of the data is  very low the cost is very cheap 
+
+Glacier Deep Archive	in this storage class the  time to acces the stored data is +12 hour's  or may be 1 day  but the cost is very cheap or the durablity is very low .
+
+
+Each bucket must have a globally unique name.  
+
+
+Steps to  create the bucket in AWS S3  . 
+
+step 1 :- 
+
+search for the s3 service in the search box . click on create bucket  select the General purpose  or Directory . 
+
+In General purpose :- it is a standerd by default type of  bucket is use to store the  most frequent access data files , videos , images etc . Inside this General purpose we crete folder inside but in the 
+Directory no need to create the folder in advance — you can upload directly. 
+
+select the General purpose.
+
+give the name of the bucket  must have a globally unique name.  
+Step 2 :-
+
+Block Public Access settings for this bucket:- 
+
+if we want t ocreate a public bucket then we uncheck the option :-
+Block all public access 
+
+and check the option / check box :-
+I acknowledge that the current settings might result in this bucket and the objects within becoming public.
+
+
+Step 3 :- 
+
+In this step enable the  Bucket Versioning or Disable also based upon requirnment .
+
+Versioning :- 
+
+Let's understand the Versioning by the help of an example   suppose u are the developer in a company XYZ  you write a code for your project or deploy in the s3 service in the AWS but after some time u desided let's
+write the code in different way for more effecent user or application friendlly so you update the code and again u deploy your code in the S3z service of the AWS  but at thet time if u enable the VERSIONING so the 
+code you upload in second time is in the  Hierarchy order of the first file of your code  again you change or deploy it again show in the below of the second file with the same name .
+
+
+let continue with the enable the VERSIONING:- 
+
+after that add tag's based upon the project's that u assign . 
+
+Step 4 :-
+Bucket Encryption 
+When you upload a file (object) to S3, Amazon automatically encrypts it on disk using one of three methods.
+
+
+Server-side encryption with Amazon S3 managed keys (SSE-S3)
+
+  AWS automatically encrypts your files using keys it creates and manages for you.
+  You don’t need to do anything extra.  this is free from the AWS side 
+                                    
+
+Server-side encryption with AWS Key Management Service keys (SSE-KMS)
+  AWS still encrypts the file, but now you control the keys using AWS KMS (Key Management Service).
+  You can also set access control, track usage, and rotate keys.
+  This Encription key is not free you pay ₹1 for 10,000 request 
+
+Dual-layer server-side encryption with AWS Key Management Service keys (DSSE-KMS)
+
+Adds two layers of encryption using KMS:
+  First key encrypts your file. Higher KMS cost (2x key usage).
+  Second key encrypts the first key. Both layers handled via KMS.
+
+
+
+Step 5 :- IN Advanced settings    
+Object Lock :-
+
+S3 Object Lock is a feature that prevents your files (objects) from being deleted or modified for a certain time — even by admins!  
+
+NOW click on create the bucket . Successfully created bucket Green popup show in the top of the screen 
+ 
