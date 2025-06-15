@@ -101,5 +101,16 @@ Object Lock :-
 
 S3 Object Lock is a feature that prevents your files (objects) from being deleted or modified for a certain time — even by admins!  
 
-NOW click on create the bucket . Successfully created bucket Green popup show in the top of the screen 
- 
+NOW click on create the bucket . Successfully created bucket Green popup show in the top of the screen.
+
+
+Term's after the bucket created 
+
+Click on the bucket and open after open in new window  you able to see  term's like :-
+-Object's    // in Object  from the object window upload , download , delete the data from the  bucket also create the folder or from the Actionyou able to deleat change the storage class of the bucket also edit the encription's of the bucket  
+-Metadata    //  in metadata store the data about the data There are two type's  1. System metadata (automatically added by AWS) Content-Length, Last-Modified, ETag, etc. User-defined metadata  2 .Custom key-value pairs that you define when uploading.For example: x-amz-meta-owner: hitesh 
+-Properties  // in the bucket properties it give the Bucket overview also edit the bucket Bucket Versioning , also able to edit the Tag's  also edit the encription level of the bucket  also edit the Object lock  also host the static website Static website hosting .
+-Permissions
+-Metrics
+-Managment 
+-Access point 
