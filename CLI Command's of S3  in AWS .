@@ -1,0 +1,5 @@
+The first the basic command of create the S3 bucket in the AWS .
+
+aws s3api create-bucket \
+  --bucket my-hitesh-bucket \
+  --region us-east-1
