@@ -1,0 +1,113 @@
+EC2 ( Elastic Compute Cloud ) this is a OS related service in the AWS it provide the Operating System with different type of the storage and the diffferent range of the cpu's  in this compue service we lounch any operating system .
+THe ec2 provides secure, resizable compute capacity in the cloud. 
+
+step's to lounch an ec2 instance in the AWS. 
+
+step 1 :-  
+first give the name of the operating system  that u want to create on the top of the cloud 
+
+Step 2 :- 
+In step second choose the type of the operating system u need to create in the AWS is Linux , wnidow , ubantu , mac OS etc 
+
+Step 3 :- 
+create a peam key it user at the time of the login in the operating system .
+
+step 5 :- 
+In step number five check or edit the networking part if needed  other wise in AWS while the account is created it create a full network setup for us .
+
+Step 6 :- 
+Allow the http , https or ssh in the instance that you lounch if forgate no probelum after instance created we edit also 
+
+Step 7 :- 
+In this step Configure storage because the instance or Operating System need the storage .
+
+Advance setting in the EC2 :- 
+
+Shutdown Behavior :-
+Stop : The instance stops, and you can start it again.  // the stop is selected default 
+Terminate: The instance is permanently deleted.
+
+
+User Data (Bootstrapping Script) :- 
+Purpose: Run commands/scripts at instance launch.
+command's like 
+#!/bin/bash
+yum install httpd 
+vim /var/www/html/index.html 
+systemctl start httpd 
+
+the command run at the instance is boot the httpd web server is automatically configer at the time of the system is boot . 
+
+Tenancy :-
+Shared : Runs on shared hardware   // it is very usefull for the 2 compney which want to share these instance to reduce the cost 
+Dedicated: Runs on dedicated hardware (expensive)
+Host: Dedicated physical server
+
+Monitoring (Enable CloudWatch) :-
+Enable detailed monitoring (at 1-minute intervals instead of default 5 minutes).
+You want to track CPU/RAM/Network more frequently
+Set up auto-scaling, alerts, or billing notifications
+
+this cloud watch service is not free.
+
+IAM Instance Profile :-
+
+Instead of storing AWS credentials inside the instance, assign a role that gives temporary permissions.
+
+
+After the instance lounch :-
+
+select the instance you see the  tab's  of 
+
+Detail :-  in the detail it tell abou the instance allmost enery thing ip's both public or private , security group, instance id, VPC id ,lounch time all most every thing .  
+Status and Alarm :-  in the status check we create a allarm if he storage is limited alarm on  if the remais limited the alarm on and all thease thing's . 
+Monitering:- IN the monitrring it tell about the CPU utilization, Network in or out  (bytes), CPU credit balance and many more in the graph formate . 
+Security :-  in the security it tell about which SG using at the time of instance lounch we change it if requirment come. It tell bothe Inbound rules Outdoor rule's  .
+Networking :- in the networking it tell about the vpc , subnet , in which AZ, ip's DNS .
+Storage :- in the storage tab it tell abou the how much hardisk u attech in your operating system also tell the Volume monitoring/utilization in the graph foemate . 
+
+
+
+Launch Templates :-Easily launch instances with predefined settings.  Needed for Auto Scaling Groups, Spot Fleets, or EC2 Fleet.
+It includes:
+AMI ID
+Instance Type
+Key Pair
+Security Groups
+Network settings
+User Data scripts
+IAM Role
+
+Reserved Instances :- You reserve a specific EC2 instance type for 1 or 3 years and get discounted rates (up to 72%).
+Standard :- there is no way to change the type of instance at the time you reuse the instance .
+Convertible :- Can change instance type .
+Scheduled :-Only active during specified time slots .
+
+IN the AMI ( Amazon machine image's ) it help u  to create your own image in the AWS and uplode it for public or or for you'r use also if the requirnment come the prticular instance lounch again with the same AMI so at that point it help a lot
+In the AMI Catalog we also select the pre created AMI drom the catalog . but is free in the free tear .
+
+
+EBS ( Elastic block storage ) :- In the EBS VOLUME  add more storage in our instance or the operating system in free tear have a limat of 30 GB but add more then 1000GB in one go . it's like attech a pendrive in the laptop after 
+created attech to the innstance bu click on the action button at top . There is a twist if the instance lounch in the  1a AZ or the data center or the instance is in 1b AZ so the volume is not able to connect to the instance 
+we connect it but it create more step's to attech so be carefull while the creating the EBS .
+
+
+Snapshots :- Snapshot create of a volume it like a backup of the volume storage . we also create volume from snapshot or at that time if need to change the AZ so it's possible . now there are two type of the snapshot
+Standred :- in standered it cost high or if requirnment come to make volume from snapshot so it possible in a sec or a minate but his cost is very high . 
+Archive :-  but in the archive the cost is decress up to 75 % from the standerd but the createon time from snapshot to volume is tak one full day in some case . 
+
+Lifecycle Manager :- AWS Lifecycle Manager is a tool inside Amazon EC2 and Amazon Data Lifecycle Manager (DLM) that helps you automate the creation, retention, and deletion of EBS snapshots (backups) and AMI images.
+Manually creating and deleting EBS snapshots or AMIs is time-consuming and error-prone. Lifecycle Manager automates this process based on rules you define.
+
+is not free in the free tear AWS lifecycle manager 
+
+
+
+
+
+
+
+
+
+
+
