@@ -3,3 +3,21 @@ The first the basic command of create the S3 bucket in the AWS .
 aws s3api create-bucket \
   --bucket my-hitesh-bucket \
   --region us-east-1
+
+This is the Actual command that run in the treminal :-
+aws s3api create-bucket --bucket my-hitteshhhbucket   --region us-east-1  --profile hiteshIAM
+
+The cli command for the upload in the  S3 bucket :-
+
+aws s3 cp /path from image copy to   s3://bucketname  --profile name 
+
+aws s3 cp  "C:\Users\Hitesh\Pictures\Screenshots\Screenshot 2025-05-02 160505.png" s3://my-hitteshhhbucket  --profile hiteshIAM
+
+for deleate the all the file from the s3 bucket the command is 
+
+aws s3 rm s3://my-hitteshhhbucket/ --recursive --profile hiteshIAM
+
+for deleate the perticular file from the s3 the CLI command for this is :-
+aws s3 rm "s3://my-hitteshhhbucket/Screenshot 2025-05-02 160505.png" --profile hiteshIAM
+
+
