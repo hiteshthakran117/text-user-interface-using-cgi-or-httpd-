@@ -1,0 +1,13 @@
+The basic the first CLI Command's to lounch the instance by using the cli command. 
+
+aws ec2 run-instances --image-id ami-xxxxxxxxxxxxxxxxx --instance-type t2.micro --key-name my-keypair --security-group-ids sg-xxxxxxxxxxxxxxxxx --subnet-id subnet-xxxxxxxxxxxxxxxxx --count 1
+
+aws ec2 run-instances --image-id ami-03a6eaae9938c858c --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-0123456789abcdef0
+--subnet-id subnet-0123456789abcdef0 --count 1 --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MyEC2Instance}]'
+
+The commmand for create a volume EBS Volume :- 
+aws ec2 create-volume  --availability-zone us-east-1a --size 10 --volume-type gp2 
+
+The commad for attech EBS Volume to the instance :- 
+
+aws ec2 attach-volume --volume-id vol-0abc123456789def0 --instance-id i-0123456789abcdef0 --device /dev/xvdf
