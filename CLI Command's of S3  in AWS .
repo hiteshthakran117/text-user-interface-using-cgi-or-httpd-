@@ -26,6 +26,10 @@ command for deleate s3 bucket in AWS
 aws s3api delete-bucket --bucket (bucket name)  --region ap-south-1      // but before the bucket deleated deleate all the object from the bucket by using the command 
 aws s3 rm s3://my-hitteshhhbucket/ --recursive --profile hiteshIAM    
 
+enable object lock at time of bucket created 
+aws s3api create-bucket --bucket my-object-lock-bucket  --region us-east-1  --object-lock-enabled-for-bucket  
+Object Lock must be enabled at bucket creation time. if the requirnment come 
+
 
 
 After the bucket ccreated add the policy the bucket policy in the json formate:- 
@@ -82,8 +86,38 @@ aws s3api put-bucket-cors --bucket my-hitteshhhbucket --cors-configuration "file
 
 
 
+Bucket object lock policy:- It allows you to store objects using a write-once-read-many (WORM) model. Objects can be locked with Retention Periods or legal holds so they cannot be deleted or overwritten until the retention period expires.
+
+the command for this bucket lock policy is the same as privous but littel change 
+
+aws s3api create-bucket --bucket my-object-lock-bucket  --region us-east-1  --object-lock-enabled-for-bucket  
+
+this command for enable the object lock at the time of bucket created no way to enable a object lock after bucket created 
+
+aws s3api put-object-lock-configuration \
+  --bucket your-newlly-bucket-name \
+  --object-lock-configuration 
 
 
+'{
+    "ObjectLockEnabled": "Enabled",
+    "Rule": {
+      "DefaultRetention": {
+        "Mode": "GOVERNANCE",         // Users with special permissions can overwrite/delete locked objects.  
+        "Days": 30                          //  "COMPLIANCE" — Objects can’t be overwritten or deleted by anyone until retention period expires.
+      }
+    }
+  }'
+                         
+
+understand by your own based uopn your knowladge 
+
+aws s3api put-object \
+  --bucket my-object-lock-bucket \
+  --key myfile.txt \
+  --body myfile.txt \
+  --object-lock-mode GOVERNANCE \
+  --object-lock-retain-until-date 2025-07-15T00:00:00Z                //  The date must be in ISO 8601 format (YYYY-MM-DDThh:mm:ssz)
 
 
 
