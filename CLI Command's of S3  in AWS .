@@ -18,6 +18,73 @@ for deleate the all the file from the s3 bucket the command is
 aws s3 rm s3://my-hitteshhhbucket/ --recursive --profile hiteshIAM
 
 for deleate the perticular file from the s3 the CLI command for this is :-
-aws s3 rm "s3://my-hitteshhhbucket/Screenshot 2025-05-02 160505.png" --profile hiteshIAM
+
+aws s3 rm "s3://my-hitteshhhbucket/Screenshot 2025-05-02 160505.png"  -- recursive --profile hiteshIAM
+
+command for deleate s3 bucket in AWS 
+
+aws s3api delete-bucket --bucket (bucket name)  --region ap-south-1      // but before the bucket deleated deleate all the object from the bucket by using the command 
+aws s3 rm s3://my-hitteshhhbucket/ --recursive --profile hiteshIAM    
+
+
+
+After the bucket ccreated add the policy the bucket policy in the json formate:- 
+
+
+aws s3api put-public-access-block   --bucket myyyyyyb123et 
+--public-access-block-configuration  BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false --profile hiteshIAM
+
+this is the command that uncheck the  all the check boxe's of the  block public  but you want to want to make it again private then change false to true  it make private 
+command for  private:-
+aws s3api put-public-access-block   --bucket myyyyyyb123et --public-access-block-configuration  BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true --profile hiteshIAM
+
+
+for make the bucket object's public first add the bucket policy in the Permissions tab so add this by using the GUI by click on the Bucket policy Edit:-
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::bucket name replace/*"
+    }
+  ]
+}
+
+
+then w wan to to do the same work by the help of the cli so fires create a file in the local system ten give the path of the file in thes command :-
+
+ aws s3api put-bucket-policy --bucket bucket-name --policy "file://C:/Users/Hitesh/Desktop/bucket policy/public-bucket-policy.json" --profile hiteshIAM  
+
+
+same process for the Cross-origin resource sharing (CORS):- 
+
+Script for this CORS
+
+{
+  "CORSRules": [
+    {
+      "AllowedHeaders": ["*"],
+      "AllowedMethods": ["GET", "POST", "PUT", "DELETE", "HEAD"],
+      "AllowedOrigins": ["*"],
+      "ExposeHeaders": [],
+      "MaxAgeSeconds": 3000
+    }
+  ]
+}
+
+
+CLI command for this:-
+aws s3api put-bucket-cors --bucket my-hitteshhhbucket --cors-configuration "file://C:/Users/Hitesh/Desktop/bucket policy/cors-config.json" --profile hitesh
+
+
+
+
+
+
+
 
 
