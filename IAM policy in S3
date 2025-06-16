@@ -1,0 +1,40 @@
+Both the IAM policy or the bucket policy can work to-gather basically what's going on we ad a policy to a user a IAM user for the perticular service for the restiction to the service like in s3 have only need to upload no it not 
+download object from the bucket so we add a policy on th IAM user only put in the bucket .
+
+first go to the IAM dashbord then create the policy or edit also  then swith to json formate na add this policy and change it based upon requirnment 
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": "arn:aws:s3:::my-hitteshhhbucket"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::my-hitteshhhbucket/*"
+    }
+  ]
+}
+
+
+The command for the cli for create the IAM policy :-
+
+aws iam create-policy --policy-name MyS3FullAccessPolicy --policy-document file://s3-policy.json
+
+
+when the policy created  filter your policy from the filter Costomer managed policy located  select the policy and attech to the user  :- 
+
+it work only if the bucket is private not work on the public bucket 
+
+aws iam attach-user-policy --user-name YourUserName --policy-arn arn:aws:iam::aws-account-id:policy/YourPolicyName 
+
+
