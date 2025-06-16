@@ -1,0 +1,56 @@
+IAM (identity access managment ) 
+In iam basically we create the user or add the user's or create user the sub user's from the  main root account provide the perticular access of the service in the AWS world. 
+So create user then create the role and the policy's for the perticular user .
+in this we create  users , group ,roles , polices , permission's etc .
+
+Step's to create the IAM user in the GUI .
+
+Step 1 :- 
+Click to create user then give the name of the user 
+
+Step 2 :- 
+After give the user name then three option come 
+1 Add user to group :- In this  the user create or direct attech to the group of other user .
+2 Copy permissions :-  In this we copy the by permision that is created in past if the new user do same task the task assign in the permission which created in the past .
+3 Attach policies directly :- In this option we attech a ney polices to the new IAM user that we created .          // AdministratorAccess it give the admin level property to IAM user 
+
+Step 3 :- 
+After give the permission verify the detail's and and click create the user . 
+
+create the Access or the security key in for the user . 
+
+NOW Let's discuss about the role's :-  it is somthing like this we create a set of permission and attech to the perticular user to do in the account or the AWS services only according to the permission's 
+
+ROLES :- An IAM Role is a set of permissions that you can "borrow" temporarily to do something in AWS, like reading from S3, launching EC2, or writing to a database and many more . 
+Create the IAM role:- 
+click to create iam role then select the Select trusted entity .
+
+AWS service :-  thse permissionsfor the AWS Service's 
+AWS account :-for the acoount 
+Web identity :- for the web in the account 
+Custom trust policy :- create a custome policy .
+
+
+now go eith the AWS Service's  and choose the user case in which service go with the EC2 in AWS  click on next .
+Then add the permission's to the role      // AdministratorAccess  go with this permission 
+
+and give the name of the role and role has been created .
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
