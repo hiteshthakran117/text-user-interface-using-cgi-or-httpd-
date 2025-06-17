@@ -5,6 +5,16 @@ aws ec2 run-instances --image-id ami-xxxxxxxxxxxxxxxxx --instance-type t2.micro 
 aws ec2 run-instances --image-id ami-03a6eaae9938c858c --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-0123456789abcdef0
 --subnet-id subnet-0123456789abcdef0 --count 1 --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MyEC2Instance}]'
 
+NOW the instace is createed but in the advance setting have a option of the  attec the iam role :-
+
+aws ec2 run-instances --image-id ami-03a6eaae9938c858c --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-0123456789abcdef0 --subnet-id subnet-0123456789abcdef0 --count 1 
+--iam-instance-profile Name=MyEC2RoleInstanceProfile --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MyEC2Instance}]'
+
+
+
+
+
+
 The commmand for create a volume EBS Volume :- 
 aws ec2 create-volume  --availability-zone us-east-1a --size 10 --volume-type gp2 
 
