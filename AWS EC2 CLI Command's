@@ -16,8 +16,25 @@ aws ec2 run-instances --image-id ami-03a6eaae9938c858c --instance-type t2.micro 
 
 
 The commmand for create a volume EBS Volume :- 
-aws ec2 create-volume  --availability-zone us-east-1a --size 10 --volume-type gp2 
+aws ec2 create-volume  --availability-zone us-east-1a --size 10 --volume-type gp2  --tag-specifications 'ResourceType=volume,Tags=[{Key=Name,Value=MyEBSVolume}]'
+in this command the name of the volume that u try to add is           myEBSvolume 
 
 The commad for attech EBS Volume to the instance :- 
 
 aws ec2 attach-volume --volume-id vol-0abc123456789def0 --instance-id i-0123456789abcdef0 --device /dev/xvdf
+
+
+now the command :-
+
+aws ec2 create-snapshot --volume-id vol-0123456789abcdef0 --description "My snapshot" --tag-specifications 'ResourceType=snapshot,Tags=[{Key=Name,Value=MySnapshot}]'
+
+the command to create a snapshot standerd to archive :-
+
+aws ec2 modify-snapshot-tier --snapshot-id snap-0123456789abcdef0 --storage-tier archive
+
+
+the commad is auto matically fatch the  snapshot id to crate the snapshot standared to archive :-
+
+SNAP_ID=$(aws ec2 create-snapshot --volume-id vol-0123456789abcdef0 --description "To Archive" --query "SnapshotId" --output text)
+aws ec2 modify-snapshot-tier --snapshot-id $SNAP_ID --storage-tier archive
+
